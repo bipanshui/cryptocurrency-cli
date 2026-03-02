@@ -1,0 +1,23 @@
+{
+  "name": "cryptocurrency",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "coindex": "./bin/coindex.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Bipanshu kumar",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "axios": "^1.13.6",
+    "colors": "^1.4.0",
+    "commander": "^14.0.3",
+    "configstore": "^8.0.0",
+    "inquirer": "^13.3.0"
+  }
+}
