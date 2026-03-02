@@ -1,26 +1,21 @@
 #!/usr/bin/env node
 
 const { program } = require("commander");
+const key = require("../commands/key.js")
 
 program
     .command("set")
     .description("Set API Key -- Get at https://nomics.com")
-    .action(() => {
-        console.log("set is working well");
-    });
+    .action(key.set);
 
 program
     .command("show")
     .description("Show API Key")
-    .action(() => {
-        console.log("Hello from show");
-    });
+    .action(key.show);
 
 program
     .command("remove")
     .description("Remove API Key")
-    .action(() => {
-        console.log("Hello from remove");
-    });
+    .action(key.remove);
 
 program.parse(process.argv);
