@@ -1,12 +1,47 @@
+const inquirer = require("inquirer").default;
+const colors = require("colors");
+const KeyManager = require("../lib/keymanager.js");
+const { isRequired } = require("../utils/validation.js");
+
 const key = {
-    set(){
-        console.log("set")
+    async set(){
+        const keyManager = new KeyManager();
+        const input = await inquirer.prompt([
+            {
+                type: 'input',
+                name: 'key',
+                message: 'Enter API key '.green + 'https://nomics.com',
+                validate: isRequired
+            }
+        ]);
+
+        const key = keyManager.setKey(input.key);
+
+        if(key){
+            console.log('API key set'.blue)
+        }
     },
     show(){
-        console.log("show")
+        try{
+            const keyManager = new KeyManager();
+            const key = keyManager.getKey();
+
+            console.log("Your key is ", key.yellow);
+        }catch(err){
+            console.error(err.message.red);
+        }
     },
     remove(){
-        console.log("remove")
+        try{
+            const keyManager = new KeyManager();
+            keyManager.deleteKey();
+
+            console.log("Key removed".green);
+
+            return key;
+        }catch(err){
+            console.error(err.message.red)
+        }
     }
 }
 
